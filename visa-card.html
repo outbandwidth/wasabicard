@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Card - Wasabi Card</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Page specific styles */
+        .page-header {
+            background-color: #f5f5f5;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 100px 0;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        .hero-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero-section p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Feature Sections */
+        .feature-section {
+            padding: 80px 0;
+        }
+        
+        .feature-section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .feature-section p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+        
+        .feature-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-image {
+            flex: 1;
+            padding: 0 50px;
+        }
+        
+        .feature-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-content {
+            flex: 1;
+            padding: 0 50px;
+        }
+        
+        .feature-content h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .feature-content p {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        /* Cashback section */
+        .cashback-section {
+            background-color: #f5f5f5;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cashback-header {
+            margin-bottom: 50px;
+        }
+        
+        .cashback-stat {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #76b852;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        /* Benefits section */
+        .benefits-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .benefit-icon {
+            font-size: 36px;
+            color: #76b852;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-description {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #76b852, #55a532);
+            color: #fff;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-white {
+            background-color: #fff;
+            color: #76b852;
+        }
+        
+        .btn-white:hover {
+            background-color: #f0f0f0;
+        }
+        
+        @media (max-width: 992px) {
+            .feature-container {
+                flex-direction: column;
+            }
+            
+            .feature-image {
+                padding: 0 20px;
+                margin-bottom: 40px;
+            }
+            
+            .feature-content {
+                padding: 0 20px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            
+            .cashback-stat {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Wasabi<span>Card</span></h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="personal.html" data-menu="personal-menu">Personal</a></li>
+                    <li><a href="business.html" data-menu="business-menu">Business</a></li>
+                    <li><a href="company.html" data-menu="company-menu">Company</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <a href="#" class="globe-icon"><i class="fas fa-globe"></i></a>
+                <a href="#" class="btn btn-primary">Get Wasabicard</a>
+            </div>
+        </div>
+
+        <!-- Personal Mega Menu -->
+        <div class="mega-menu" id="personal-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Personal Features</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-wallet"></i></div>
+                            <a href="money-account.html">
+                                <div class="menu-content">
+                                    <h4>Money account</h4>
+                                    <p>Level up the way you use money, everyday</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-paper-plane"></i></div>
+                            <a href="send-money.html">
+                                <div class="menu-content">
+                                    <h4>Send Money</h4>
+                                    <p>Send & receive money in 7+ currencies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="visa-card.html">
+                                <div class="menu-content">
+                                    <h4>Cards</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="virtual-card.html">
+                                <div class="menu-content">
+                                    <h4>Virtual Card</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-percentage"></i></div>
+                            <a href="cashback.html">
+                                <div class="menu-content">
+                                    <h4>Cashback</h4>
+                                    <p>Get Cashback on your card purchases</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="defi.html">
+                                <div class="menu-content">
+                                    <h4>DeFi Investment</h4>
+                                    <p>Get higher returns through DeFi</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="referral.html">
+                                <div class="menu-content">
+                                    <h4>Referral Program</h4>
+                                    <p>Get higher returns through Referral Program</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Mega Menu -->
+        <div class="mega-menu" id="business-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Business Solutions</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-building"></i></div>
+                            <a href="multi-account.html">
+                                <div class="menu-content">
+                                    <h4>Business account</h4>
+                                    <p>Manage your business finances with ease</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="business.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your physical card</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div></div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="business.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your virtual card</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Mega Menu -->
+        <div class="mega-menu" id="company-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>About Wasabicard</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-info-circle"></i></div>
+                            <a href="about.html">
+                                <div class="menu-content">
+                                    <h4>About Us</h4>
+                                    <p>Learn more about our mission and values</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="help.html">
+                                <div class="menu-content">
+                                    <h4>Help Center</h4>
+                                    <p>The Wasabi help center</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-newspaper"></i></div>
+                            <a href="blog.html">
+                                <div class="menu-content">
+                                    <h4>Blog</h4>
+                                    <p>The Wasabi blog</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="contact.html">
+                                <div class="menu-content">
+                                    <h4>Contact Us</h4>
+                                    <p>Get in touch with our support team</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="feedback.html">
+                                <div class="menu-content">
+                                    <h4>Feedback</h4>
+                                    <p>Give us your feedback</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <h2>Your pass to the world</h2>
+            <p>Wherever you go, whatever you pursue — The Wasabi Card is designed for those who seek more than just convenience — but status, rewards, and global freedom worldwide in the palm of their hand.</p>
+            <a href="#" class="btn btn-primary">Request your card</a>
+        </div>
+    </section>
+
+    <section class="feature-section">
+        <div class="container">
+            <h2>High limits. Global reach.</h2>
+            <div class="feature-container">
+                <div class="feature-image">
+                    <img src="https://via.placeholder.com/500x300" alt="Wasabi Global Card">
+                </div>
+                <div class="feature-content">
+                    <p>The world doesn't stop at your doorstep. Neither should your card. No matter the currency, no matter the country, the Wasabi Card moves effortlessly with you.</p>
+                    <p>You spend, you live, and everything just works in the background. Quietly. Smoothly. Powerfully. Because when you move, the world moves with you.</p>
+                    <a href="#" class="btn btn-primary">Make it yours</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cashback-section">
+        <div class="container">
+            <div class="cashback-header">
+                <h2>Turn every payment into a reward</h2>
+                <p>Wasabi turns your spending into momentum — with up to 8% Cashback that grows quietly in the background as you move through life, whether you're investing in your passions or simply enjoying the moment.</p>
+                <p>Just real rewards, stack up while you focus on what's next. It's not about spending more. It's about making every moment worth more.</p>
+            </div>
+            <div class="cashback-stat">
+                <div class="stat-item">
+                    <div class="stat-number">Up to 8%</div>
+                    <div class="stat-label">Cashback</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">+110M</div>
+                    <div class="stat-label">Merchants worldwide</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-section">
+        <div class="container">
+            <h2>Explore the world with confidence</h2>
+            <p>Your journey doesn't pause at borders. Travel the world with ease, and use your card everywhere Mastercard is accepted. Enjoy seamless payments and withdrawals globally, as if you're right at home. No local currency? No problem. We'll convert it for you at a cheap rate.</p>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Convenience, without compromise.</h2>
+            <p>Life moves fast. Your card keeps pace. Wasabi gives you full control at your fingertips:</p>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="benefit-title">Shop and withdraw worldwide with ease</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="benefit-title">Freeze or unfreeze your card instantly</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="benefit-title">Get real-time alerts on your transactions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>This isn't just a card. It's a standard.</h2>
+            <p>The Wasabi Card is a companion for those who live on their own terms. For those who believe that financial freedom isn't an aspiration, it's a baseline. So take the next step. Not because you have to — but because it's the natural move forward.</p>
+            <p>Your next move starts here.</p>
+            <a href="#" class="btn btn-white">Request card</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">Virtual card</a></li>
+                        <li><a href="#">Cards</a></li>
+                        <li><a href="#">Transfers</a></li>
+                        <li><a href="#">Business account</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Media Kit</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community Feedback</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Card Terms</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Download Wasabi</h3>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <i class="fab fa-apple"></i> Download for iOS
+                        </a>
+                        <a href="#" class="app-button">
+                            <i class="fab fa-google-play"></i> Download for Android
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Licensed & Regulated | Made with ❤️ | Copyright © 2023 Wasabi Card. All rights reserved.</p>
+                <p><small>Mastercard is a registered trademark and the circles design is a trademark of Mastercard International Incorporated. This card is issued pursuant to license by Mastercard International Incorporated.</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 

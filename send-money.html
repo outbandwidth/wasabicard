@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Money - Wasabicard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        /* Additional styles for send-money page */
+        .money-transfer-hero {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+        
+        .section-divider {
+            border-top: 1px solid #eaeaea;
+            margin: 40px 0;
+        }
+        
+        .fx-rates, .transfer-speed, .how-to-send, .lightning-speed {
+            padding: 80px 0;
+        }
+        
+        .how-to-send {
+            background-color: #f9f9f9;
+        }
+        
+        .how-to-send h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 28px;
+        }
+        
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #76b852;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: bold;
+        }
+        
+        .fx-rates .container, .lightning-speed .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        
+        .fx-content, .speed-content, .lightning-content {
+            flex: 1;
+        }
+        
+        .fx-image, .lightning-image {
+            flex: 1;
+        }
+        
+        .fx-image img, .lightning-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .digital-currency-transfers {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .dc-content h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .dc-content > p {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .benefit-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .benefit-item i {
+            font-size: 2.5rem;
+            color: #76b852;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-item h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .dc-content .btn {
+            display: block;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .steps-container {
+                flex-direction: column;
+            }
+            
+            .fx-rates .container, .lightning-speed .container {
+                flex-direction: column;
+            }
+            
+            .fx-content, .lightning-content {
+                order: 2;
+            }
+            
+            .fx-image, .lightning-image {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Wasabi<span>Card</span></h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="personal.html" data-menu="personal-menu">Personal</a></li>
+                    <li><a href="business.html" data-menu="business-menu">Business</a></li>
+                    <li><a href="company.html" data-menu="company-menu">Company</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <a href="#" class="globe-icon"><i class="fas fa-globe"></i></a>
+                <a href="#" class="btn btn-primary">Get Wasabicard</a>
+            </div>
+        </div>
+
+        <!-- Personal Mega Menu -->
+        <div class="mega-menu" id="personal-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Personal Features</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-wallet"></i></div>
+                            <a href="money-account.html">
+                                <div class="menu-content">
+                                    <h4>Money account</h4>
+                                    <p>Level up the way you use money, everyday</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-paper-plane"></i></div>
+                            <a href="send-money.html">
+                                <div class="menu-content">
+                                    <h4>Send Money</h4>
+                                    <p>Send & receive money in 7+ currencies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="visa-card.html">
+                                <div class="menu-content">
+                                    <h4>Cards</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="virtual-card.html">
+                                <div class="menu-content">
+                                    <h4>Virtual Card</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-percentage"></i></div>
+                            <a href="cashback.html">
+                                <div class="menu-content">
+                                    <h4>Cashback</h4>
+                                    <p>Get Cashback on your card purchases</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="defi.html">
+                                <div class="menu-content">
+                                    <h4>DeFi Investment</h4>
+                                    <p>Get higher returns through DeFi</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="referral.html">
+                                <div class="menu-content">
+                                    <h4>Referral Program</h4>
+                                    <p>Get higher returns through Referral Program</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Mega Menu -->
+        <div class="mega-menu" id="business-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Business Solutions</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-building"></i></div>
+                            <a href="multi-account.html">
+                                <div class="menu-content">
+                                    <h4>Business account</h4>
+                                    <p>Manage your business finances with ease</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="business.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your physical card</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div></div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="business.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your virtual card</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Mega Menu -->
+        <div class="mega-menu" id="company-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>About Wasabicard</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-info-circle"></i></div>
+                            <a href="about.html">
+                                <div class="menu-content">
+                                    <h4>About Us</h4>
+                                    <p>Learn more about our mission and values</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="help.html">
+                                <div class="menu-content">
+                                    <h4>Help Center</h4>
+                                    <p>The Wasabi help center</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-newspaper"></i></div>
+                            <a href="blog.html">
+                                <div class="menu-content">
+                                    <h4>Blog</h4>
+                                    <p>The Wasabi blog</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="contact.html">
+                                <div class="menu-content">
+                                    <h4>Contact Us</h4>
+                                    <p>Get in touch with our support team</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="feedback.html">
+                                <div class="menu-content">
+                                    <h4>Feedback</h4>
+                                    <p>Give us your feedback</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero money-transfer-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>International money transfers</h2>
+                    <p>
+                        Fast-track your money transfers with Wasabicard, experience fast international transfers at
+                        exceptional exchange rates, making every transaction a breeze.
+                    </p>
+                    <a href="#" class="btn btn-primary">Start saving</a>
+                </div>
+                <div class="hero-image">
+                    <img src="./images/money-transfer.png" alt="Money Transfer" />
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- FX Rates Section -->
+        <section class="fx-rates">
+            <div class="container">
+                <div class="fx-content">
+                    <h2>Smile-worthy fx rates</h2>
+                    <p>
+                        Enjoy instant transfers between users in the app, making sure your money moves exactly when you need
+                        it. Plus, we offer fast traditional transfers through Faster Payments and SEPA, ensuring your funds
+                        arrive quickly.
+                    </p>
+                    <a href="#" class="btn btn-secondary">Start saving</a>
+                </div>
+                <div class="fx-image">
+                    <img src="./images/fx-rates.png" alt="FX Rates" />
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Transfer Speed Section -->
+        <section class="transfer-speed">
+            <div class="container">
+                <div class="speed-content">
+                    <h2>How fast are money transfers?</h2>
+                    <p>
+                        Enjoy instant transfers between users in the app, making sure your money moves exactly when you need
+                        it. Plus, we offer fast traditional transfers through Faster Payments and SEPA, ensuring your funds
+                        arrive quickly.
+                    </p>
+                    <a href="#" class="btn btn-primary">Send money</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- How To Send Section -->
+        <section class="how-to-send">
+            <div class="container">
+                <h2>HOW TO SEND MONEY WITH WASABICARD</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Register for free</h3>
+                        <p>Create a free account on our website. Easily top up your account through bank transfer, card, and other payment options.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Select your method</h3>
+                        <p>Choose your transfer method, and enter how much you want to send. Add the recipient's details and their currency. You'll see our exchange rates and fees upfront.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Transfer money</h3>
+                        <p>All done — We'll handle the rest, and keep you posted on the status of your transfer through email notifications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Lightning Speed Section -->
+        <section class="lightning-speed">
+            <div class="container">
+                <div class="lightning-content">
+                    <h2>Send money at lightning speed</h2>
+                    <p>
+                        Fast-track your money transfers with Wasabicard, experience fast international transfers at
+                        exceptional exchange rates, making every transaction a breeze.
+                    </p>
+                    <a href="#" class="btn btn-primary">Start saving</a>
+                </div>
+                <div class="lightning-image">
+                    <img src="./images/lightning-speed.png" alt="Lightning Speed" />
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Digital Currency Transfers Section -->
+        <section class="digital-currency-transfers">
+            <div class="container">
+                <div class="dc-content">
+                    <h2>Digital Currency Fast Transfers</h2>
+                    <p>Experience the future of international money transfers with Wasabicard's digital currency service.</p>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <i class="fas fa-globe"></i>
+                            <h3>20+ Countries Coverage</h3>
+                            <p>Send money instantly to more than 20 countries worldwide with just a few clicks.</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Lightning Fast Arrival</h3>
+                            <p>While traditional banks take 3-5 business days, our digital transfers complete in minutes.</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-percentage"></i>
+                            <h3>Lower Exchange Rates</h3>
+                            <p>Save up to 70% on exchange fees compared to traditional banking services.</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Enhanced Security</h3>
+                            <p>Our blockchain-based transfers offer superior security and transparency for your peace of mind.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary">Try Digital Transfers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>A financial platform built for you</h2>
+                <p>
+                    Trade on the go, invest, and grow your wealth. Start building a better financial future with Wasabicard.
+                </p>
+                <a href="#" class="btn btn-primary">Get started</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">Virtual card</a></li>
+                        <li><a href="#">Cards</a></li>
+                        <li><a href="#">Transfers</a></li>
+                        <li><a href="#">Business account</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Media Kit</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community Feedback</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Card Terms</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Download Wasabicard</h3>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <i class="fab fa-apple"></i> Download for iOS
+                        </a>
+                        <a href="#" class="app-button">
+                            <i class="fab fa-google-play"></i> Download for Android
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    Licensed & Regulated | Made with ❤️ | Copyright © 2025 Wasabicard. All
+                    rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

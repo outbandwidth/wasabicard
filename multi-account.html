@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Account Management - Wasabi Card</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Page specific styles */
+        .page-header {
+            background-color: #f5f5f5;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-section {
+            padding: 80px 0;
+        }
+        
+        .feature-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        
+        .feature-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .feature-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .feature-image,
+        .feature-content {
+            flex: 1;
+        }
+        
+        .feature-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-content {
+            padding: 0 50px;
+        }
+        
+        .feature-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .feature-list {
+            margin-bottom: 30px;
+        }
+        
+        .feature-list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .feature-list-icon {
+            font-size: 18px;
+            color: #76b852;
+            margin-right: 15px;
+        }
+        
+        .feature-list-text {
+            font-size: 16px;
+        }
+        
+        .dashboard-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .dashboard-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard-section p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .dashboard-preview {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .dashboard-preview img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .dashboard-feature {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .dashboard-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-feature-icon {
+            font-size: 40px;
+            color: #76b852;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard-feature h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .dashboard-feature p {
+            color: #666;
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        .how-it-works {
+            padding: 80px 0;
+        }
+        
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            flex: 1;
+            padding: 0 20px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 70px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: #76b852;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .step p {
+            color: #666;
+        }
+        
+        .pricing-section {
+            background-color: #f5f5f5;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .pricing-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-section p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .pricing-plans {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .pricing-plan {
+            flex: 1;
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-plan.featured {
+            border: 2px solid #76b852;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .plan-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background-color: #76b852;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .plan-name {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .plan-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #76b852;
+            margin-bottom: 20px;
+        }
+        
+        .plan-price span {
+            font-size: 16px;
+            color: #999;
+        }
+        
+        .plan-features {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .plan-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .plan-feature i {
+            color: #76b852;
+            margin-right: 10px;
+        }
+        
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #76b852, #55a532);
+            color: #fff;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-white {
+            background-color: #fff;
+            color: #76b852;
+        }
+        
+        .btn-white:hover {
+            background-color: #f0f0f0;
+        }
+        
+        @media (max-width: 992px) {
+            .feature-row {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .feature-row:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .feature-content {
+                padding: 0;
+            }
+            
+            .dashboard-features {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .step:not(:last-child):after {
+                display: none;
+            }
+            
+            .pricing-plans {
+                flex-direction: column;
+                gap: 30px;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Wasabi<span>Card</span></h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="personal.html" data-menu="personal-menu">Personal</a></li>
+                    <li><a href="business.html" data-menu="business-menu">Business</a></li>
+                    <li><a href="company.html" data-menu="company-menu">Company</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <a href="#" class="globe-icon"><i class="fas fa-globe"></i></a>
+                <a href="#" class="btn btn-primary">Get Wasabicard</a>
+            </div>
+        </div>
+
+        <!-- Personal Mega Menu -->
+        <div class="mega-menu" id="personal-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Personal Features</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-wallet"></i></div>
+                            <a href="money-account.html">
+                                <div class="menu-content">
+                                    <h4>Money account</h4>
+                                    <p>Level up the way you use money, everyday</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-paper-plane"></i></div>
+                            <a href="send-money.html">
+                                <div class="menu-content">
+                                    <h4>Send Money</h4>
+                                    <p>Send & receive money in 7+ currencies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="visa-card.html">
+                                <div class="menu-content">
+                                    <h4>Cards</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="virtual-card.html">
+                                <div class="menu-content">
+                                    <h4>Virtual Card</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-percentage"></i></div>
+                            <a href="cashback.html">
+                                <div class="menu-content">
+                                    <h4>Cashback</h4>
+                                    <p>Get Cashback on your card purchases</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="defi.html">
+                                <div class="menu-content">
+                                    <h4>DeFi Investment</h4>
+                                    <p>Get higher returns through DeFi</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="referral.html">
+                                <div class="menu-content">
+                                    <h4>Referral Program</h4>
+                                    <p>Get higher returns through Referral Program</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Mega Menu -->
+        <div class="mega-menu" id="business-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Business Solutions</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-building"></i></div>
+                            <a href="multi-account.html">
+                                <div class="menu-content">
+                                    <h4>Business account</h4>
+                                    <p>Manage your business finances with ease</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="business.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your physical card</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div></div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="business.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your virtual card</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Mega Menu -->
+        <div class="mega-menu" id="company-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>About Wasabicard</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-info-circle"></i></div>
+                            <a href="about.html">
+                                <div class="menu-content">
+                                    <h4>About Us</h4>
+                                    <p>Learn more about our mission and values</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="help.html">
+                                <div class="menu-content">
+                                    <h4>Help Center</h4>
+                                    <p>The Wasabi help center</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-newspaper"></i></div>
+                            <a href="blog.html">
+                                <div class="menu-content">
+                                    <h4>Blog</h4>
+                                    <p>The Wasabi blog</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="contact.html">
+                                <div class="menu-content">
+                                    <h4>Contact Us</h4>
+                                    <p>Get in touch with our support team</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="feedback.html">
+                                <div class="menu-content">
+                                    <h4>Feedback</h4>
+                                    <p>Give us your feedback</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Multi-Account Management</h1>
+            <p>Streamline your business finances with our powerful multi-account management solution that gives you full control and visibility.</p>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="feature-row">
+                <div class="feature-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Multi-Account Dashboard">
+                </div>
+                <div class="feature-content">
+                    <h2>Centralized Financial Control</h2>
+                    <p>Manage all your business accounts from a single dashboard with our intuitive multi-account management system.</p>
+                    <div class="feature-list">
+                        <div class="feature-list-item">
+                            <div class="feature-list-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-list-text">View all accounts and balances at a glance</div>
+                        </div>
+                        <div class="feature-list-item">
+                            <div class="feature-list-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-list-text">Transfer funds between accounts instantly</div>
+                        </div>
+                        <div class="feature-list-item">
+                            <div class="feature-list-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-list-text">Set custom permissions for team members</div>
+                        </div>
+                        <div class="feature-list-item">
+                            <div class="feature-list-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-list-text">Monitor expenses across all accounts in real-time</div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Team Collaboration">
+                </div>
+                <div class="feature-content">
+                    <h2>Team Collaboration Made Simple</h2>
+                    <p>Empower your team with secure access to the financial tools they need while maintaining full oversight and control.</p>
+                    <div class="feature-list">
+                        <div class="feature-list-item">
+                            <div class="feature-list-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-list-text">Assign role-based permissions to team members</div>
+                        </div>
+                        <div class="feature-list-item">
+                            <div class="feature-list-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-list-text">Issue expense cards with customizable limits</div>
+                        </div>
+                        <div class="feature-list-item">
+                            <div class="feature-list-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-list-text">Receive notifications for approvals and spending</div>
+                        </div>
+                        <div class="feature-list-item">
+                            <div class="feature-list-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-list-text">Share financial reports with stakeholders</div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <h2>Powerful Dashboard for Complete Oversight</h2>
+            <p>Our intuitive dashboard gives you a comprehensive view of your business finances, allowing you to make informed decisions quickly.</p>
+            <div class="dashboard-preview">
+                <img src="https://via.placeholder.com/900x500" alt="Wasabi Multi-Account Dashboard">
+            </div>
+            <div class="dashboard-features">
+                <div class="dashboard-feature">
+                    <div class="dashboard-feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Financial Analytics</h3>
+                    <p>Gain insights into spending patterns, cash flow, and financial trends across all your accounts.</p>
+                </div>
+                <div class="dashboard-feature">
+                    <div class="dashboard-feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team Management</h3>
+                    <p>Add team members, set permissions, and monitor activity all from your central dashboard.</p>
+                </div>
+                <div class="dashboard-feature">
+                    <div class="dashboard-feature-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Expense Tracking</h3>
+                    <p>Categorize and track expenses across accounts, with receipt capture and automated reconciliation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How Multi-Account Management Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Set Up Accounts</h3>
+                    <p>Create multiple accounts for different departments or purposes within your business.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Add Team Members</h3>
+                    <p>Invite team members and assign them appropriate access levels to specific accounts.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Issue Cards</h3>
+                    <p>Create virtual or physical cards for team members with custom spending limits and controls.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Monitor & Manage</h3>
+                    <p>Track spending, approve requests, and generate reports all from one central dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <p>Choose the plan that best fits your business needs with no hidden fees or long-term commitments.</p>
+            <div class="pricing-plans">
+                <div class="pricing-plan">
+                    <div class="plan-name">Starter</div>
+                    <div class="plan-price">$29<span>/month</span></div>
+                    <div class="plan-features">
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Up to 3 accounts</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>5 team members</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>10 virtual cards</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Basic analytics</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Email support</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-plan featured">
+                    <div class="plan-badge">Most Popular</div>
+                    <div class="plan-name">Business</div>
+                    <div class="plan-price">$79<span>/month</span></div>
+                    <div class="plan-features">
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Up to 10 accounts</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>20 team members</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Unlimited virtual cards</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Advanced analytics</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Priority support</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-plan">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-price">$199<span>/month</span></div>
+                    <div class="plan-features">
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Unlimited accounts</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Unlimited team members</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Unlimited virtual cards</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Custom analytics</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Dedicated support manager</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business Finance Management?</h2>
+            <p>Join thousands of businesses that are streamlining their financial operations with Wasabi Card's multi-account management solution.</p>
+            <a href="#" class="btn btn-white">Get Started Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">Virtual card</a></li>
+                        <li><a href="#">Cards</a></li>
+                        <li><a href="#">Transfers</a></li>
+                        <li><a href="#">Business account</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Media Kit</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community Feedback</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Card Terms</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Download Wasabi</h3>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <i class="fab fa-apple"></i> Download for iOS
+                        </a>
+                        <a href="#" class="app-button">
+                            <i class="fab fa-google-play"></i> Download for Android
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Licensed & Regulated | Made with ❤️ | Copyright © 2023 Wasabi Card. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 

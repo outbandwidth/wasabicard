@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Card - Wasabi Card</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Page specific styles */
+        .page-header {
+            background-color: #f5f5f5;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .page-content {
+            padding: 80px 0;
+        }
+        
+        .feature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        
+        .feature-section:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .feature-section:nth-child(even) .feature-content {
+            direction: ltr;
+        }
+        
+        .feature-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .feature-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefits-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .benefits-section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .benefit-icon {
+            font-size: 40px;
+            color: #76b852;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card p {
+            color: #666;
+        }
+        
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        @media (max-width: 992px) {
+            .feature-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefit-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* Pricing Table Styles */
+        .pricing-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .pricing-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-description {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .pricing-table {
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .pricing-table th,
+        .pricing-table td {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-table th {
+            background-color: #76b852;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .pricing-table th:first-child {
+            text-align: left;
+        }
+        
+        .pricing-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .pricing-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .pricing-notes {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .pricing-notes p {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-table th,
+            .pricing-table td {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Wasabi<span>Card</span></h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="personal.html" data-menu="personal-menu">Personal</a></li>
+                    <li><a href="business.html" data-menu="business-menu">Business</a></li>
+                    <li><a href="company.html" data-menu="company-menu">Company</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <a href="#" class="globe-icon"><i class="fas fa-globe"></i></a>
+                <a href="#" class="btn btn-primary">Get Wasabicard</a>
+            </div>
+        </div>
+
+        <!-- Personal Mega Menu -->
+        <div class="mega-menu" id="personal-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Personal Features</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-wallet"></i></div>
+                            <a href="money-account.html">
+                                <div class="menu-content">
+                                    <h4>Money account</h4>
+                                    <p>Level up the way you use money, everyday</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-paper-plane"></i></div>
+                            <a href="send-money.html">
+                                <div class="menu-content">
+                                    <h4>Send Money</h4>
+                                    <p>Send & receive money in 7+ currencies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="visa-card.html">
+                                <div class="menu-content">
+                                    <h4>Cards</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="virtual-card.html">
+                                <div class="menu-content">
+                                    <h4>Virtual Card</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-percentage"></i></div>
+                            <a href="cashback.html">
+                                <div class="menu-content">
+                                    <h4>Cashback</h4>
+                                    <p>Get Cashback on your card purchases</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="defi.html">
+                                <div class="menu-content">
+                                    <h4>DeFi Investment</h4>
+                                    <p>Get higher returns through DeFi</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="referral.html">
+                                <div class="menu-content">
+                                    <h4>Referral Program</h4>
+                                    <p>Get higher returns through Referral Program</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Mega Menu -->
+        <div class="mega-menu" id="business-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Business Solutions</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-building"></i></div>
+                            <a href="multi-account.html">
+                                <div class="menu-content">
+                                    <h4>Business account</h4>
+                                    <p>Manage your business finances with ease</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="business.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your physical card</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div></div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="business.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your virtual card</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Mega Menu -->
+        <div class="mega-menu" id="company-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>About Wasabicard</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-info-circle"></i></div>
+                            <a href="about.html">
+                                <div class="menu-content">
+                                    <h4>About Us</h4>
+                                    <p>Learn more about our mission and values</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="help.html">
+                                <div class="menu-content">
+                                    <h4>Help Center</h4>
+                                    <p>The Wasabi help center</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-newspaper"></i></div>
+                            <a href="blog.html">
+                                <div class="menu-content">
+                                    <h4>Blog</h4>
+                                    <p>The Wasabi blog</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="contact.html">
+                                <div class="menu-content">
+                                    <h4>Contact Us</h4>
+                                    <p>Get in touch with our support team</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="feedback.html">
+                                <div class="menu-content">
+                                    <h4>Feedback</h4>
+                                    <p>Give us your feedback</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Virtual Card</h1>
+            <p>Experience the convenience and security of our digital card solution for all your online transactions.</p>
+        </div>
+    </section>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="feature-section">
+                <div class="feature-content">
+                    <h2>Instant Activation</h2>
+                    <p>Create your virtual card in seconds. No waiting, no paperwork. Just instant access to a secure payment method you can use right away for online shopping, subscriptions, and more.</p>
+                    <a href="#" class="btn btn-primary">Get Your Card</a>
+                </div>
+                <div class="feature-image">
+                    <img src="https://via.placeholder.com/500x400" alt="Instant Activation">
+                </div>
+            </div>
+
+            <div class="feature-section">
+                <div class="feature-content">
+                    <h2>Enhanced Security</h2>
+                    <p>Our virtual cards come with advanced security features including real-time notifications, spending limits, and the ability to freeze/unfreeze your card instantly. Shop online with complete peace of mind.</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="feature-image">
+                    <img src="https://via.placeholder.com/500x400" alt="Enhanced Security">
+                </div>
+            </div>
+
+            <div class="feature-section">
+                <div class="feature-content">
+                    <h2>Full Control</h2>
+                    <p>Manage everything from our intuitive app. Set spending limits, track transactions in real-time, and get detailed analytics on your spending habits to help you stay on budget.</p>
+                    <a href="#" class="btn btn-primary">Explore Features</a>
+                </div>
+                <div class="feature-image">
+                    <img src="https://via.placeholder.com/500x400" alt="Full Control">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Why Choose Wasabi Virtual Card</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Maximum Security</h3>
+                    <p>Your card details are protected with bank-level encryption and you can delete or freeze your card anytime.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Creation</h3>
+                    <p>No waiting time. Create and use your virtual card immediately after signing up.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Acceptance</h3>
+                    <p>Use your virtual card with millions of online merchants worldwide.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Customizable</h3>
+                    <p>Set your own spending limits and control exactly when and where your card can be used.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Expense Tracking</h3>
+                    <p>Monitor your spending with detailed transaction history and analytics.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Cost Effective</h3>
+                    <p>No hidden fees or minimum balance requirements. Just simple, transparent pricing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <h2>Card Fees & Pricing</h2>
+            <p class="section-description">Transparent pricing with no hidden fees. Choose the plan that fits your needs.</p>
+            
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fee Type</th>
+                            <th>Standard Plan</th>
+                            <th>Premium Plan</th>
+                            <th>Business Plan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Card Issuance</td>
+                            <td>10 USD</td>
+                            <td>8 USD</td>
+                            <td>6 USD</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Fee</td>
+                            <td>$0</td>
+                            <td>$0</td>
+                            <td>$0</td>
+                        </tr>
+                        <tr>
+                            <td>Transaction Fee</td>
+                            <td>1.5%</td>
+                            <td>0.5%</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr>
+                            <td>Currency Exchange</td>
+                            <td>2.5%</td>
+                            <td>1%</td>
+                            <td>0.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Card Replacement</td>
+                            <td>$15</td>
+                            <td>$5</td>
+                            <td>$5</td>
+                        </tr>
+                        <tr>
+                            <td>Spending Limit</td>
+                            <td>$5,000/month</td>
+                            <td>$20,000/month</td>
+                            <td>$50,000/month</td>
+                        </tr>
+                        <!-- <tr>
+                            <td>ATM Withdrawal</td>
+                            <td>$2 + 2%</td>
+                            <td>$2</td>
+                            <td>Free</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pricing-notes">
+                <p>* All prices are in USD. Additional fees may apply for certain services. See terms and conditions for details.</p>
+                <p>* Premium and Business plans include additional benefits such as higher cashback rates and priority customer support.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to get your virtual card?</h2>
+            <p>Sign up today and create your first virtual card in minutes. Experience secure, flexible online payments with Wasabi Card.</p>
+            <a href="#" class="btn btn-primary">Get Started Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">Virtual card</a></li>
+                        <li><a href="#">Cards</a></li>
+                        <li><a href="#">Transfers</a></li>
+                        <li><a href="#">Business account</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Media Kit</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community Feedback</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Card Terms</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Download Wasabi</h3>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <i class="fab fa-apple"></i> Download for iOS
+                        </a>
+                        <a href="#" class="app-button">
+                            <i class="fab fa-google-play"></i> Download for Android
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Licensed & Regulated | Made with ❤️ | Copyright © 2023 Wasabi Card. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 

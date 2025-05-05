@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeFi & Virtual Cards - Wasabi Card</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Page specific styles */
+        .page-header {
+            background-color: #f5f5f5;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .page-content {
+            padding: 80px 0;
+        }
+        
+        .feature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        
+        .feature-section:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .feature-section:nth-child(even) .feature-content {
+            direction: ltr;
+        }
+        
+        .feature-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .feature-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefits-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .benefits-section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 40px;
+            color: #76b852;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card p {
+            color: #666;
+        }
+        
+        .highlights-section {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+        }
+        
+        .highlight-item {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-left: 5px solid #76b852;
+            margin: 20px 0;
+        }
+        
+        .use-cases-section {
+            padding: 50px 0;
+        }
+        
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .use-case-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .use-case-card h3 {
+            color: #76b852;
+            margin-bottom: 15px;
+        }
+        
+        .future-section {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            margin-top: 80px;
+        }
+        
+        @media (max-width: 992px) {
+            .feature-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefit-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Wasabi<span>Card</span></h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="personal.html" data-menu="personal-menu">Personal</a></li>
+                    <li><a href="business.html" data-menu="business-menu">Business</a></li>
+                    <li><a href="company.html" data-menu="company-menu">Company</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <a href="#" class="globe-icon"><i class="fas fa-globe"></i></a>
+                <a href="#" class="btn btn-primary">Get Wasabicard</a>
+            </div>
+        </div>
+
+        <!-- Personal Mega Menu -->
+        <div class="mega-menu" id="personal-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Personal Features</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-wallet"></i></div>
+                            <a href="money-account.html">
+                                <div class="menu-content">
+                                    <h4>Money account</h4>
+                                    <p>Level up the way you use money, everyday</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-paper-plane"></i></div>
+                            <a href="send-money.html">
+                                <div class="menu-content">
+                                    <h4>Send Money</h4>
+                                    <p>Send & receive money in 7+ currencies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="visa-card.html">
+                                <div class="menu-content">
+                                    <h4>Cards</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="virtual-card.html">
+                                <div class="menu-content">
+                                    <h4>Virtual Card</h4>
+                                    <p>The card that does it all</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-percentage"></i></div>
+                            <a href="cashback.html">
+                                <div class="menu-content">
+                                    <h4>Cashback</h4>
+                                    <p>Get Cashback on your card purchases</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="defi.html">
+                                <div class="menu-content">
+                                    <h4>DeFi Investment</h4>
+                                    <p>Get higher returns through DeFi</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-coins"></i></div>
+                            <a href="referral.html">
+                                <div class="menu-content">
+                                    <h4>Referral Program</h4>
+                                    <p>Get higher returns through Referral Program</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Mega Menu -->
+        <div class="mega-menu" id="business-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>Business Solutions</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-building"></i></div>
+                            <a href="multi-account.html">
+                                <div class="menu-content">
+                                    <h4>Business account</h4>
+                                    <p>Manage your business finances with ease</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
+                            <a href="physical-white-card.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your physical card</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="virtual-white-card.html">
+                                <div class="menu-content">
+                                    <h4>Card issuing</h4>
+                                    <p>Customize your virtual card</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Mega Menu -->
+        <div class="mega-menu" id="company-menu">
+            <div class="container">
+                <div class="menu-section">
+                    <h3>About Wasabicard</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-info-circle"></i></div>
+                            <a href="about.html">
+                                <div class="menu-content">
+                                    <h4>About Us</h4>
+                                    <p>Learn more about our mission and values</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-users"></i></div>
+                            <a href="help.html">
+                                <div class="menu-content">
+                                    <h4>Help Center</h4>
+                                    <p>The Wasabi help center</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-newspaper"></i></div>
+                            <a href="blog.html">
+                                <div class="menu-content">
+                                    <h4>Blog</h4>
+                                    <p>The Wasabi blog</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-phone"></i></div>
+                            <a href="contact.html">
+                                <div class="menu-content">
+                                    <h4>Contact Us</h4>
+                                    <p>Get in touch with our support team</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon"><i class="fas fa-comment"></i></div>
+                            <a href="feedback.html">
+                                <div class="menu-content">
+                                    <h4>Feedback</h4>
+                                    <p>Give us your feedback</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>数字货币与DeFi结合的创新金融模式</h1>
+            <p>打造无缝加密资产理财体验，让您的数字资产持续增值</p>
+        </div>
+    </section>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="feature-section">
+                <div class="feature-content">
+                    <h2>数字货币与DeFi的融合</h2>
+                    <p>数字货币结合去中心化金融（DeFi）开创了全新的财富管理模式，为用户提供了传统金融无法企及的灵活性、收益率和自主权。WasabiCard将这两个创新领域无缝整合，使用户能够在安全使用数字资产的同时获得持续的被动收益。</p>
+                    <div class="highlight-item">
+                        <p><strong>核心价值主张：</strong></p>
+                        <ul>
+                            <li>资产永不闲置，持续产生收益</li>
+                            <li>用户对资金拥有完全控制权</li>
+                            <li>透明的收益机制和费率结构</li>
+                            <li>全球范围内随时随地访问您的资产</li>
+                            <li>打破传统金融壁垒，普惠金融服务</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-image">
+                    <img src="images/defi-concept.jpg" alt="数字货币与DeFi结合" onerror="this.src='https://via.placeholder.com/600x400?text=Crypto+DeFi+Integration'">
+                </div>
+            </div>
+
+            <div class="feature-section">
+                <div class="feature-content">
+                    <h2>为什么选择数字货币+DeFi理财模式？</h2>
+                    <p>传统金融系统中，您的资金往往只能获得微薄的利息，同时被各种限制和手续费消耗。数字货币结合DeFi理财彻底改变了这一局面，让您的每一分资产都能发挥最大价值。</p>
+                    <div class="highlight-item">
+                        <p><strong>行业领先优势：</strong>我们的解决方案将数字货币的便捷与DeFi的高收益完美结合，为用户创造了一个全天候工作的财富增长引擎，同时保持资产的流动性和可用性。</p>
+                    </div>
+                    <a href="virtual-card.html" class="btn btn-primary">探索我们的解决方案</a>
+                </div>
+                <div class="feature-image">
+                    <img src="images/defi-card.jpg" alt="数字货币DeFi理财" onerror="this.src='https://via.placeholder.com/600x400?text=Crypto+DeFi+Benefits'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2>数字货币+DeFi为用户带来的革命性好处</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>远超传统的收益率</h3>
+                    <p>DeFi协议通常提供5-20%甚至更高的年化收益率，比传统银行的0.01-2%高出数倍，让您的数字资产快速增值。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3>无需许可的金融自由</h3>
+                    <p>无需信用评分、无需账户审批、无地域限制，任何人都可以平等地参与DeFi生态系统，享受普惠金融服务。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>极速流动性和灵活性</h3>
+                    <p>随时存取资金，无锁定期限制，满足紧急需求的同时不牺牲收益，打破传统理财产品的刚性兑付模式。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>资产自主权与安全性</h3>
+                    <p>通过非托管解决方案，您始终保持对资产的完全控制，消除第三方风险，同时享受区块链的安全保障。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3>多元化收益策略</h3>
+                    <p>一站式接入流动性挖矿、借贷协议、收益聚合器等多种DeFi产品，构建多样化的收益组合，平衡风险与回报。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>智能化资产管理</h3>
+                    <p>AI驱动的资金配置策略自动寻找最优收益路径，无需专业知识也能获得专业级的资产管理服务。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>边消费边理财</h3>
+                    <p>与传统支付方式不同，您不仅能避免高昂的手续费，还能在消费过程中持续获得DeFi收益，实现资金的双重价值。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases-section">
+        <div class="container">
+            <h2>数字货币+DeFi的实际应用场景</h2>
+            <p>数字货币结合DeFi不仅是理论上的创新，更是能解决实际问题的实用工具。以下是一些能够切实改善用户财务状况的应用场景：</p>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <h3><i class="fas fa-university"></i> 替代传统储蓄</h3>
+                    <p>将闲置资金从低息银行账户转移到DeFi协议，获得5-10倍的收益率，同时保持资金的流动性和可用性。</p>
+                </div>
+                
+                <div class="use-case-card">
+                    <h3><i class="fas fa-globe"></i> 跨境资金管理</h3>
+                    <p>国际工作者和数字游民可轻松管理全球资产，无需应对繁琐的银行程序和高额跨境手续费，同时持续获得收益。</p>
+                </div>
+                
+                <div class="use-case-card">
+                    <h3><i class="fas fa-hand-holding-usd"></i> 抵御通货膨胀</h3>
+                    <p>在高通胀国家，数字货币+DeFi为用户提供了保值增值的有效途径，对抗本币贬值带来的财富缩水。</p>
+                </div>
+                
+                <div class="use-case-card">
+                    <h3><i class="fas fa-seedling"></i> 被动收入构建</h3>
+                    <p>通过持续复利效应，小额资金也能逐步构建可观的被动收入流，为财务自由和提前退休奠定基础。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="future-section">
+        <div class="container">
+            <div class="highlights-section">
+                <h2>数字货币+DeFi在行业中的价值和前景</h2>
+                <p>数字货币结合DeFi理财不仅为个人用户带来好处，更正在重塑整个金融行业的格局：</p>
+                
+                <div class="highlight-item">
+                    <ul>
+                        <li><strong>金融民主化</strong> - 打破传统金融的垄断和排他性，使金融服务真正普惠化</li>
+                        <li><strong>金融效率提升</strong> - 去除中间环节，降低运营成本，提高资金使用效率</li>
+                        <li><strong>金融创新加速</strong> - 可组合性特征使新金融产品能够快速迭代和创新</li>
+                        <li><strong>全球流动性整合</strong> - 跨越地域边界，整合全球流动性，优化资本配置</li>
+                        <li><strong>财富重分配</strong> - 让更多普通用户能够分享金融创新带来的财富增长</li>
+                    </ul>
+                </div>
+                
+                <p>通过将数字货币与DeFi理财结合，我们正站在金融革命的前沿，为用户打造真正开放、高效、公平的新金融系统。随着技术的成熟和用户采用的增加，这一模式的价值将得到进一步凸显和放大。</p>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#" class="btn btn-primary">加入金融创新的浪潮</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="virtual-card.html">虚拟卡</a></li>
+                        <li><a href="visa-card.html">Visa卡</a></li>
+                        <li><a href="virtual-white-card.html">虚拟白卡</a></li>
+                        <li><a href="physical-white-card.html">实体白卡</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>公司</h3>
+                    <ul>
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="blog.html">博客</a></li>
+                        <li><a href="help.html">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>法律</h3>
+                    <ul>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">合规声明</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>下载应用</h3>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <i class="fab fa-apple"></i>
+                            <span>App Store</span>
+                        </a>
+                        <a href="#" class="app-button">
+                            <i class="fab fa-google-play"></i>
+                            <span>Google Play</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wasabi Card. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 
