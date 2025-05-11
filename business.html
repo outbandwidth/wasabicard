@@ -32,7 +32,7 @@
         
         .solutions-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin-top: 50px;
         }
@@ -140,6 +140,55 @@
             font-size: 14px;
         }
         
+        .timeline-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .timeline-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-section > .container > p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .timeline-item {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .timeline-icon {
+            font-size: 40px;
+            color: #76b852;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
         .features-section {
             padding: 80px 0;
         }
@@ -147,21 +196,27 @@
         .features-section h2 {
             text-align: center;
             font-size: 36px;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .features-section > .container > p {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
         }
         
         .feature-row {
             display: flex;
-            margin-bottom: 80px;
-        }
-        
-        .feature-row:last-child {
+            justify-content: center;
+            gap: 40px;
             margin-bottom: 0;
         }
         
         .feature-item {
             flex: 1;
-            padding: 0 20px;
+            max-width: 300px;
             text-align: center;
         }
         
@@ -178,6 +233,7 @@
         
         .feature-item p {
             color: #666;
+            line-height: 1.6;
         }
         
         .cta-section {
@@ -226,16 +282,16 @@
         
         @media (max-width: 992px) {
             .solutions-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
             
-            .testimonial-grid {
+            .timeline-grid {
                 grid-template-columns: 1fr;
             }
             
             .feature-row {
                 flex-direction: column;
-                gap: 40px;
+                align-items: center;
             }
             
             .cta-buttons {
@@ -245,10 +301,6 @@
         }
         
         @media (max-width: 768px) {
-            .solutions-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .solution-box {
                 max-width: 400px;
                 margin: 0 auto;
@@ -266,9 +318,9 @@
             </div>
             <nav>
                 <ul class="main-menu">
-                    <li><a href="personal.html" data-menu="personal-menu">Personal</a></li>
-                    <li><a href="business.html" data-menu="business-menu">Business</a></li>
-                    <li><a href="company.html" data-menu="company-menu">Company</a></li>
+                    <li><a href="" data-menu="personal-menu">Personal</a></li>
+                    <li><a href="" data-menu="business-menu">Business</a></li>
+                    <li><a href="" data-menu="company-menu">Company</a></li>
                 </ul>
             </nav>
             <div class="cta-buttons">
@@ -306,15 +358,6 @@
                             <a href="visa-card.html">
                                 <div class="menu-content">
                                     <h4>Cards</h4>
-                                    <p>The card that does it all</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-icon"><i class="fas fa-credit-card"></i></div>
-                            <a href="virtual-card.html">
-                                <div class="menu-content">
-                                    <h4>Virtual Card</h4>
                                     <p>The card that does it all</p>
                                 </div>
                             </a>
@@ -371,20 +414,11 @@
                             <a href="business.html">
                                 <div class="menu-content">
                                     <h4>Card issuing</h4>
-                                    <p>Customize your physical card</p>
+                                    <p>Customize your card</p>
                                 </div>
                             </a>
                         </div>
                         <div></div>
-                        <div class="menu-item">
-                            <div class="menu-icon"><i class="fas fa-users"></i></div>
-                            <a href="business.html">
-                                <div class="menu-content">
-                                    <h4>Card issuing</h4>
-                                    <p>Customize your virtual card</p>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -449,80 +483,65 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Business Solutions</h1>
-            <p>Empower your business with cutting-edge financial solutions designed to unlock new market opportunities and drive revenue growth.</p>
+            <h1>Launch your own card</h1>
+            <p>Design, issue, and launch your own physical and virtual cards — fully branded, fully yours. With fast integration and seamless control, your card program is closer than you think.</p>
         </div>
     </section>
 
     <section class="solutions-overview">
         <div class="container">
-            <h2 class="text-center">Our Comprehensive Business Solutions</h2>
+            <h2 class="text-center">Your card program, your way</h2>
+            <p class="text-center">Our card program is built to seamlessly support your needs, whether virtual, physical or all at once, tailored for B2C or B2B solutions.</p>
             <div class="solutions-grid">
                 <div class="solution-box">
                     <div class="solution-image">
-                        <img src="https://via.placeholder.com/500x300" alt="Multi-Account Management">
+                        <img src="https://via.placeholder.com/500x300" alt="Physical Cards">
                     </div>
                     <div class="solution-content">
-                        <h3>Multi-Account Management</h3>
-                        <p>Efficiently manage multiple business accounts with centralized administration and detailed reporting.</p>
-                        <a href="multi-account.html" class="btn btn-primary">Learn More</a>
+                        <h3>Physical Cards</h3>
+                        <p>A classic physical card, ideal for everyday spending in-store and convenient ATM cash withdrawals. A trusted choice for customers to make payments offline.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
                 <div class="solution-box">
                     <div class="solution-image">
-                        <img src="https://via.placeholder.com/500x300" alt="Virtual White Card">
+                        <img src="https://via.placeholder.com/500x300" alt="Virtual Cards">
                     </div>
                     <div class="solution-content">
-                        <h3>Virtual White Card</h3>
-                        <p>Launch your own branded virtual cards with customized limits, controls, and detailed transaction tracking.</p>
-                        <a href="virtual-white-card.html" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-                <div class="solution-box">
-                    <div class="solution-image">
-                        <img src="https://via.placeholder.com/500x300" alt="Physical White Card">
-                    </div>
-                    <div class="solution-content">
-                        <h3>Physical White Card</h3>
-                        <p>Issue branded physical cards to your team with complete control over spending and management.</p>
-                        <a href="physical-white-card.html" class="btn btn-primary">Learn More</a>
+                        <h3>Virtual Cards</h3>
+                        <p>Instantly generated and ready for immediate use online or in-app. A safe and versatile choice for digital-first users or businesses handling online transactions.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
+    <section class="timeline-section">
         <div class="container">
-            <h2>Trusted by Businesses Worldwide</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Wasabi Card has revolutionized how we manage employee expenses. The multi-account management system saves us hours of administrative work each month, and the detailed reporting is invaluable for our accounting team."</p>
+            <h2>Launch your branded card in as little as 3 months</h2>
+            <p>Want a branded card not the headache? Instead of spending months trying to tie these pieces together, we do it all for you, taking care of all the details and letting you focus on growing your business.</p>
+            <div class="timeline-grid">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-rocket"></i>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="https://via.placeholder.com/100x100" alt="Sarah Johnson">
-                        </div>
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>CFO, TechGrowth Solutions</p>
-                        </div>
-                    </div>
+                    <h3>Fast Integration</h3>
+                    <p>Our cutting-edge API ensures swift integration, enabling you to launch your own branded card in record time.</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"We've been using Wasabi's white card solution for our client expense management, and it's been a game-changer. The ability to customize cards with our branding has enhanced our professional image while giving us complete control over spending."</p>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="https://via.placeholder.com/100x100" alt="Michael Chen">
-                        </div>
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>CEO, Global Consulting Group</p>
-                        </div>
+                    <h3>Brand Customization</h3>
+                    <p>Build unforgettable brand moments with custom packaging and premium inserts that stay with your customers.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
+                    <h3>Complete Control</h3>
+                    <p>Full control over your card program with our comprehensive management platform.</p>
                 </div>
             </div>
         </div>
@@ -530,51 +549,29 @@
 
     <section class="features-section">
         <div class="container">
-            <h2>Key Business Features</h2>
+            <h2>Why partner with us?</h2>
+            <p>We've built and scaled our own card programs, so we understand the pressures you face firsthand. From compliance to customer experience, we've simplified every step of the journey.</p>
             <div class="feature-row">
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-check-circle"></i>
                     </div>
-                    <h3>Enhanced Security</h3>
-                    <p>Multi-factor authentication, customizable permissions, and fraud monitoring to keep your business finances secure.</p>
+                    <h3>Experience</h3>
+                    <p>Built and scaled our own card programs, understanding your challenges firsthand.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Real-time Analytics</h3>
-                    <p>Get instant insights into spending patterns, cash flow, and financial performance across all accounts.</p>
+                    <h3>Efficiency</h3>
+                    <p>Simplified every step of the journey to help you launch faster and operate smoother.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>Seamless Integration</h3>
-                    <p>Connect with your existing accounting software for streamlined operations and reduced manual entry.</p>
-                </div>
-            </div>
-            <div class="feature-row">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Team Management</h3>
-                    <p>Assign roles, set permissions, and manage your entire team's financial access from one dashboard.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Global Transactions</h3>
-                    <p>Conduct business globally with competitive exchange rates and low international transaction fees.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
-                    <h3>Automated Reporting</h3>
-                    <p>Schedule and generate comprehensive financial reports for better decision-making and compliance.</p>
+                    <h3>Partnership</h3>
+                    <p>A partner who truly knows what it takes to succeed in the card industry.</p>
                 </div>
             </div>
         </div>
@@ -582,11 +579,11 @@
 
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to transform your business finances?</h2>
-            <p>Join thousands of businesses already using Wasabi Card to streamline payments, manage expenses, and drive growth.</p>
+            <h2>Let's bring your card vision to life</h2>
+            <p>Skip the red tape, skip the delays. We make it simple to design, issue, and scale your own cards — without the usual roadblocks. Big ideas deserve fast execution.</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-white">Schedule a Demo</a>
-                <a href="#" class="btn btn-outline">Contact Sales</a>
+                <a href="#" class="btn btn-white">Start Today</a>
+                <a href="#" class="btn btn-outline">Get in Touch</a>
             </div>
         </div>
     </section>

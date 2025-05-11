@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<!-- 
+Note: You need to replace the placeholder QR code image at 'images/qr-code-placeholder.png' 
+with an actual QR code image for the deposit address shown in this page.
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deposit - Wasabicard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        /* Additional styles for deposit page */
+        .deposit-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background-color: #76b852;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .token-selection, .network-selection, .deposit-address {
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: #fff;
+        }
+
+        .token-selection {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .token-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .token-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .token-name {
+            font-weight: 600;
+        }
+
+        .token-subname {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .warning-box {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .warning-box h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+
+        .address-container {
+            width: 100%;
+            position: relative;
+        }
+
+        .address-display {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eaeaea;
+            background-color: #f9f9f9;
+            font-size: 14px;
+            word-break: break-all;
+            margin-bottom: 10px;
+        }
+
+        .min-deposit {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        .recent-transactions {
+            margin-top: 40px;
+        }
+
+        .recent-transactions h3 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .recent-transactions h3 a {
+            color: #76b852;
+            font-size: 14px;
+        }
+
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .transactions-table th {
+            text-align: left;
+            padding: 12px 10px;
+            font-size: 14px;
+            color: #888;
+            font-weight: normal;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .transactions-table td {
+            padding: 15px 10px;
+            font-size: 14px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .copy-icon, .view-icon {
+            cursor: pointer;
+            color: #76b852;
+            margin-left: 5px;
+        }
+
+        .copy-btn {
+            display: block;
+            background-color: #76b852;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #669944;
+        }
+
+        .status-pending {
+            color: #f39c12;
+        }
+
+        .status-completed {
+            color: #76b852;
+        }
+
+        @media (max-width: 768px) {
+            .deposit-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Wasabi<span>Card</span></h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="personal.html" data-menu="personal-menu">Personal</a></li>
+                    <li><a href="business.html" data-menu="business-menu">Business</a></li>
+                    <li><a href="company.html" data-menu="company-menu">Company</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <a href="#" class="globe-icon"><i class="fas fa-globe"></i></a>
+                <a href="#" class="btn btn-primary">Get Wasabicard</a>
+            </div>
+        </div>
+
+        <!-- Personal Mega Menu -->
+        <div class="mega-menu" id="personal-menu">
+            <!-- Menu content would go here, copied from other pages -->
+        </div>
+
+        <!-- Business Mega Menu -->
+        <div class="mega-menu" id="business-menu">
+            <!-- Menu content would go here, copied from other pages -->
+        </div>
+
+        <!-- Company Mega Menu -->
+        <div class="mega-menu" id="company-menu">
+            <!-- Menu content would go here, copied from other pages -->
+        </div>
+    </header>
+
+    <div class="deposit-container">
+        <a href="#" class="back-link">
+            <i class="fas fa-arrow-left"></i> 充值
+        </a>
+
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>选择币种</h3>
+                    <div class="token-selection">
+                        <div class="token-info">
+                            <div class="token-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div>
+                                <div class="token-name">USDT</div>
+                                <div class="token-subname">TetherUS</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>选择网络</h3>
+                    <div class="token-selection">
+                        <div class="token-info">
+                            <div>ARBITRUM</div>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="network-info">
+                        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 14px; color: #666;">
+                            <div>合约地址</div>
+                            <div style="color: #76b852;">查看更 <i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>充值地址</h3>
+                    <div class="deposit-address">
+                        <div class="qr-container">
+                            <img src="images/qr-code-placeholder.png" alt="QR Code" class="qr-code">
+                            <div>地址</div>
+                        </div>
+                        <div class="address-container">
+                            <div class="address-display">0x2887ab85fae0f2ac5b5be60ae462e75a5c8adb4e</div>
+                            <button class="copy-btn" onclick="copyAddress()"><i class="fas fa-copy"></i> 复制地址</button>
+                        </div>
+                        <div class="min-deposit">
+                            <div>最小充值数量</div>
+                            <div>大于 0.01 USDT</div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>温馨提示</h3>
+                        <p>1. 请确认收款账号 USDT 资产名称，务必其他资产严格按照实际名称转账</p>
+                        <p>2. 请注意：若有来自区域或小额交易被数字资产平台拦截入账，由此带来的损失概不承担！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-transactions">
+            <h3>
+                <span>近期充值记录</span>
+                <a href="#">全部记录 <i class="fas fa-angle-right"></i></a>
+            </h3>
+            <table class="transactions-table">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>网络</th>
+                        <th>币种</th>
+                        <th>充值数量</th>
+                        <th>发送地址</th>
+                        <th>TxID</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-04-29 22:48:47</td>
+                        <td>Arbitrum</td>
+                        <td>USDT</td>
+                        <td>4,627.58</td>
+                        <td>0xd7E4...fe8a <i class="fas fa-external-link-alt copy-icon"></i></td>
+                        <td>0xc02...e1c91 <i class="fas fa-external-link-alt view-icon"></i></td>
+                        <td class="status-pending">确认中</td>
+                    </tr>
+                    <tr>
+                        <td>2025-04-29 22:48:47</td>
+                        <td>Arbitrum</td>
+                        <td>USDT</td>
+                        <td>4,627.58</td>
+                        <td>0xd7E4...fe8a <i class="fas fa-external-link-alt copy-icon"></i></td>
+                        <td>0xc02...e1c91 <i class="fas fa-external-link-alt view-icon"></i></td>
+                        <td class="status-pending">确认中</td>
+                    </tr>
+                    <tr>
+                        <td>2025-04-29 22:48:47</td>
+                        <td>Arbitrum</td>
+                        <td>USDT</td>
+                        <td>4,627.58</td>
+                        <td>0xd7E4...fe8a <i class="fas fa-external-link-alt copy-icon"></i></td>
+                        <td>0xc02...e1c91 <i class="fas fa-external-link-alt view-icon"></i></td>
+                        <td class="status-completed">已完成</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="money-account.html">Money Account</a></li>
+                        <li><a href="send-money.html">Send Money</a></li>
+                        <li><a href="visa-card.html">Visa Card</a></li>
+                        <li><a href="virtual-card.html">Virtual Card</a></li>
+                        <li><a href="defi.html">DeFi Investment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wasabicard. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        function copyAddress() {
+            const address = document.querySelector('.address-display').innerText;
+            navigator.clipboard.writeText(address)
+                .then(() => {
+                    const copyBtn = document.querySelector('.copy-btn');
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> 已复制';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                    alert('复制失败，请手动复制地址');
+                });
+        }
+    </script>
+</body>
+
+</html> 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,23 +14,23 @@
             padding: 60px 0;
             text-align: center;
         }
-        
+
         .page-header h1 {
             font-size: 42px;
             margin-bottom: 15px;
         }
-        
+
         .page-header p {
             font-size: 18px;
             color: #666;
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
         .page-content {
             padding: 80px 0;
         }
-        
+
         .feature-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -37,123 +38,123 @@
             align-items: center;
             margin-bottom: 100px;
         }
-        
+
         .feature-section:nth-child(even) {
             direction: rtl;
         }
-        
+
         .feature-section:nth-child(even) .feature-content {
             direction: ltr;
         }
-        
+
         .feature-content h2 {
             font-size: 36px;
             margin-bottom: 20px;
         }
-        
+
         .feature-content p {
             font-size: 18px;
             color: #666;
             margin-bottom: 30px;
         }
-        
+
         .feature-image img {
             max-width: 100%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .benefits-section {
             background-color: #f9f9f9;
             padding: 80px 0;
             text-align: center;
         }
-        
+
         .benefits-section h2 {
             font-size: 36px;
             margin-bottom: 50px;
         }
-        
+
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
-        
+
         .benefit-card {
             background-color: #fff;
             padding: 40px 30px;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-        
+
         .benefit-icon {
             font-size: 40px;
             color: #76b852;
             margin-bottom: 20px;
         }
-        
+
         .benefit-card h3 {
             font-size: 22px;
             margin-bottom: 15px;
         }
-        
+
         .benefit-card p {
             color: #666;
         }
-        
+
         .cta-section {
             padding: 100px 0;
             text-align: center;
             background-color: #f5f5f5;
         }
-        
+
         .cta-section h2 {
             font-size: 36px;
             margin-bottom: 20px;
         }
-        
+
         .cta-section p {
             font-size: 18px;
             color: #666;
             max-width: 700px;
             margin: 0 auto 30px;
         }
-        
+
         @media (max-width: 992px) {
             .feature-section {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
+
             .benefits-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        
+
         @media (max-width: 768px) {
             .benefits-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .benefit-card {
                 max-width: 400px;
                 margin: 0 auto;
             }
         }
-        
+
         /* Pricing Table Styles */
         .pricing-section {
             padding: 80px 0;
             background-color: #fff;
         }
-        
+
         .pricing-section h2 {
             font-size: 36px;
             text-align: center;
             margin-bottom: 20px;
         }
-        
+
         .section-description {
             text-align: center;
             font-size: 18px;
@@ -161,12 +162,12 @@
             max-width: 700px;
             margin: 0 auto 50px;
         }
-        
+
         .pricing-table {
             overflow-x: auto;
             margin-bottom: 30px;
         }
-        
+
         .pricing-table table {
             width: 100%;
             border-collapse: collapse;
@@ -174,14 +175,14 @@
             border-radius: 10px;
             overflow: hidden;
         }
-        
+
         .pricing-table th,
         .pricing-table td {
             padding: 15px 20px;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
-        
+
         .pricing-table th {
             background-color: #76b852;
             color: white;
@@ -190,37 +191,111 @@
             font-size: 14px;
             letter-spacing: 0.5px;
         }
-        
+
         .pricing-table th:first-child {
             text-align: left;
         }
-        
+
         .pricing-table td:first-child {
             text-align: left;
             font-weight: 500;
             color: #333;
         }
-        
+
         .pricing-table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-        
+
         .pricing-table tr:hover {
             background-color: #f5f5f5;
         }
-        
+
         .pricing-notes {
             max-width: 800px;
             margin: 0 auto;
             color: #666;
             font-size: 14px;
         }
-        
+
         .pricing-notes p {
             margin-bottom: 10px;
         }
-        
+
+        /* Subscription List Styles */
+        .subscription-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .subscription-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .subscription-list li:hover {
+            background-color: #e9e9e9;
+            transform: translateY(-2px);
+        }
+
+        .subscription-list li i {
+            font-size: 24px;
+            color: #76b852;
+        }
+
+        /* Wallet Integration Styles */
+        .wallet-integration {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .wallet-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .wallet-item:hover {
+            background-color: #e9e9e9;
+            transform: translateY(-2px);
+        }
+
+        .wallet-item i {
+            font-size: 40px;
+            color: #76b852;
+        }
+
+        .wallet-item span {
+            font-weight: 500;
+        }
+
         @media (max-width: 768px) {
+            .subscription-list {
+                grid-template-columns: 1fr;
+            }
+
+            .wallet-integration {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+
             .pricing-table th,
             .pricing-table td {
                 padding: 10px;
@@ -229,6 +304,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -423,7 +499,8 @@
     <section class="page-header">
         <div class="container">
             <h1>Virtual Card</h1>
-            <p>Experience the convenience and security of our digital card solution for all your online transactions.</p>
+            <p>Experience the convenience and security of our digital card solution for all your online transactions.
+            </p>
         </div>
     </section>
 
@@ -432,7 +509,8 @@
             <div class="feature-section">
                 <div class="feature-content">
                     <h2>Instant Activation</h2>
-                    <p>Create your virtual card in seconds. No waiting, no paperwork. Just instant access to a secure payment method you can use right away for online shopping, subscriptions, and more.</p>
+                    <p>Create your virtual card in seconds. No waiting, no paperwork. Just instant access to a secure
+                        payment method you can use right away for online shopping, subscriptions, and more.</p>
                     <a href="#" class="btn btn-primary">Get Your Card</a>
                 </div>
                 <div class="feature-image">
@@ -443,7 +521,9 @@
             <div class="feature-section">
                 <div class="feature-content">
                     <h2>Enhanced Security</h2>
-                    <p>Our virtual cards come with advanced security features including real-time notifications, spending limits, and the ability to freeze/unfreeze your card instantly. Shop online with complete peace of mind.</p>
+                    <p>Our virtual cards come with advanced security features including real-time notifications,
+                        spending limits, and the ability to freeze/unfreeze your card instantly. Shop online with
+                        complete peace of mind.</p>
                     <a href="#" class="btn btn-primary">Learn More</a>
                 </div>
                 <div class="feature-image">
@@ -451,7 +531,7 @@
                 </div>
             </div>
 
-            <div class="feature-section">
+            <!-- <div class="feature-section">
                 <div class="feature-content">
                     <h2>Full Control</h2>
                     <p>Manage everything from our intuitive app. Set spending limits, track transactions in real-time, and get detailed analytics on your spending habits to help you stay on budget.</p>
@@ -459,6 +539,65 @@
                 </div>
                 <div class="feature-image">
                     <img src="https://via.placeholder.com/500x400" alt="Full Control">
+                </div>
+            </div> -->
+        </div>
+    </section>
+    <section class="page-content">
+        <div class="container">
+            <div class="feature-section">
+              
+                <div class="feature-content">
+                    <h2>Easy Subscription Management</h2>
+                    <p>Seamlessly manage all your digital subscriptions with our virtual card. Perfect for services like:
+                    </p>
+                    <ul class="subscription-list">
+                        <li><i class="fab fa-openai"></i> OpenAI</li>
+                        <li><i class="fab fa-facebook"></i> Facebook</li>
+                        <li><i class="fab fa-aws"></i> AWS</li>
+                        <li><i class="fab fa-aws"></i> Netflix</li>
+                        <li><i class="fab fa-aws"></i> Amazon</li>
+                        <li><i class="fab fa-aws"></i> Apple</li>
+                        <li><i class="fab fa-aws"></i> Starlink</li>
+                        <li><i class="fab fa-aws"></i> Starbucks</li>
+                        <li><i class="fab fa-weixin"></i> WeChat Pay</li>
+                        <li><i class="fas fa-mobile-alt"></i> Alipay</li>
+                        <li><i class="fas fa-cloud"></i> Cloudflare</li>
+                        <li><i class="fab fa-telegram"></i> Telegram Premium</li>
+                        <li><i class="fab fa-google"></i> Google ADS</li>
+                        <li><i class="fab fa-google"></i> AliExpress</li>
+                        <li><i class="fab fa-google"></i> Youtube</li>
+                        <li><i class="fab fa-google"></i> Tiktok</li>
+                        <li><i class="fab fa-google"></i> Instagram</li>
+                        <li><i class="fab fa-google"></i> Twitter</li>
+                        
+                    </ul>
+                    <p>Set up recurring payments with ease and manage all your subscriptions in one place.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="https://via.placeholder.com/500x400" alt="Subscription Management">
+                </div>
+            </div>
+
+            <div class="feature-section">
+               
+                <div class="feature-content">
+                    <h2>Use your virtual card like a physical card</h2>
+                    <p>Easily bind to Apple Pay or Google Pay:</p>
+                    <div class="wallet-integration">
+                        <div class="wallet-item">
+                            <i class="fab fa-apple-pay"></i>
+                            <span>Apple Pay</span>
+                        </div>
+                        <div class="wallet-item">
+                            <i class="fab fa-google-pay"></i>
+                            <span>Google Pay</span>
+                        </div>
+                    </div>
+                    <p>Add your virtual card to your favorite digital wallet and enjoy contactless payments anywhere.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="https://via.placeholder.com/500x400" alt="Digital Wallet Integration">
                 </div>
             </div>
         </div>
@@ -473,13 +612,14 @@
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Maximum Security</h3>
-                    <p>Your card details are protected with bank-level encryption and you can delete or freeze your card anytime.</p>
+                    <p>Your card details are protected with bank-level encryption and you can delete or freeze your card
+                        anytime.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Instant Creation</h3>
+                    <h3>Instant Shopping</h3>
                     <p>No waiting time. Create and use your virtual card immediately after signing up.</p>
                 </div>
                 <div class="benefit-card">
@@ -517,8 +657,9 @@
     <section class="pricing-section">
         <div class="container">
             <h2>Card Fees & Pricing</h2>
-            <p class="section-description">Transparent pricing with no hidden fees. Choose the plan that fits your needs.</p>
-            
+            <p class="section-description">Transparent pricing with no hidden fees. Choose the plan that fits your
+                needs.</p>
+
             <div class="pricing-table">
                 <table>
                     <thead>
@@ -575,10 +716,12 @@
                     </tbody>
                 </table>
             </div>
-            
+
             <div class="pricing-notes">
-                <p>* All prices are in USD. Additional fees may apply for certain services. See terms and conditions for details.</p>
-                <p>* Premium and Business plans include additional benefits such as higher cashback rates and priority customer support.</p>
+                <p>* All prices are in USD. Additional fees may apply for certain services. See terms and conditions for
+                    details.</p>
+                <p>* Premium and Business plans include additional benefits such as higher cashback rates and priority
+                    customer support.</p>
             </div>
         </div>
     </section>
@@ -586,7 +729,8 @@
     <section class="cta-section">
         <div class="container">
             <h2>Ready to get your virtual card?</h2>
-            <p>Sign up today and create your first virtual card in minutes. Experience secure, flexible online payments with Wasabi Card.</p>
+            <p>Sign up today and create your first virtual card in minutes. Experience secure, flexible online payments
+                with Wasabi Card.</p>
             <a href="#" class="btn btn-primary">Get Started Now</a>
         </div>
     </section>
@@ -642,4 +786,5 @@
 
     <script src="scripts.js"></script>
 </body>
-</html> 
+
+</html>

@@ -9,151 +9,256 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <style>
         /* Additional styles for send-money page */
-        .money-transfer-hero {
-            background-color: #f9f9f9;
-            padding: 80px 0;
+        .hero-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 120px 0 80px;
         }
-        
-        .section-divider {
-            border-top: 1px solid #eaeaea;
-            margin: 40px 0;
-        }
-        
-        .fx-rates, .transfer-speed, .how-to-send, .lightning-speed {
-            padding: 80px 0;
-        }
-        
-        .how-to-send {
-            background-color: #f9f9f9;
-        }
-        
-        .how-to-send h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 28px;
-        }
-        
-        .steps-container {
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            max-width: 1000px;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(45deg, #76b852, #76b852);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 32px;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .step {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            flex: 1;
-            text-align: center;
+
+        .feature-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
-        
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background-color: #76b852;
-            color: white;
-            border-radius: 50%;
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #f3f4f6;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin-bottom: 24px;
+        }
+
+        .feature-icon i {
+            font-size: 36px;
+            color: #76b852;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1f2937;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 24px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            color: #4b5563;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: #76b852;
+            position: absolute;
+            left: 0;
             font-weight: bold;
         }
-        
-        .fx-rates .container, .lightning-speed .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-        }
-        
-        .fx-content, .speed-content, .lightning-content {
-            flex: 1;
-        }
-        
-        .fx-image, .lightning-image {
-            flex: 1;
-        }
-        
-        .fx-image img, .lightning-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .digital-currency-transfers {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-        
-        .dc-content h2 {
-            margin-bottom: 20px;
+
+        .cta-section {
+            background: linear-gradient(135deg, #76b852 0%, #76b852 100%);
+            padding: 100px 0;
             text-align: center;
+            color: #ffffff;
         }
-        
-        .dc-content > p {
-            text-align: center;
-            margin-bottom: 50px;
+
+        .cta-content {
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .benefit-item {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-        
-        .benefit-item i {
-            font-size: 2.5rem;
-            color: #76b852;
-            margin-bottom: 15px;
-        }
-        
-        .benefit-item h3 {
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        
-        .dc-content .btn {
-            display: block;
-            max-width: 250px;
             margin: 0 auto;
         }
-        
+
+        .cta-content h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .cta-content p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #76b852;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .steps-container {
-                flex-direction: column;
+            .hero-text h1 {
+                font-size: 36px;
             }
-            
-            .fx-rates .container, .lightning-speed .container {
-                flex-direction: column;
-            }
-            
-            .fx-content, .lightning-content {
-                order: 2;
-            }
-            
-            .fx-image, .lightning-image {
-                order: 1;
-                margin-bottom: 30px;
-            }
-            
-            .benefits-grid {
+
+            .features-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+
+        .supported-currencies-section {
+            background: #f9f9f9;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        .supported-currencies-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: #222;
+        }
+        .supported-currencies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px 32px;
+            font-size: 18px;
+        }
+        .supported-currencies span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 8px 16px;
+            font-weight: 500;
+        }
+        .supported-currencies img {
+            width: 28px;
+            height: 20px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            object-fit: cover;
+        }
+        @media (max-width: 600px) {
+            .supported-currencies {
+                gap: 10px 8px;
+                font-size: 15px;
+            }
+            .supported-currencies span {
+                padding: 6px 10px;
+            }
+            .supported-currencies img {
+                width: 20px;
+                height: 14px;
             }
         }
     </style>
@@ -352,152 +457,107 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero money-transfer-hero">
+        <section class="hero-section">
             <div class="container">
                 <div class="hero-content">
-                    <h2>International money transfers</h2>
-                    <p>
-                        Fast-track your money transfers with Wasabicard, experience fast international transfers at
-                        exceptional exchange rates, making every transaction a breeze.
-                    </p>
-                    <a href="#" class="btn btn-primary">Start saving</a>
-                </div>
-                <div class="hero-image">
-                    <img src="./images/money-transfer.png" alt="Money Transfer" />
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- FX Rates Section -->
-        <section class="fx-rates">
-            <div class="container">
-                <div class="fx-content">
-                    <h2>Smile-worthy fx rates</h2>
-                    <p>
-                        Enjoy instant transfers between users in the app, making sure your money moves exactly when you need
-                        it. Plus, we offer fast traditional transfers through Faster Payments and SEPA, ensuring your funds
-                        arrive quickly.
-                    </p>
-                    <a href="#" class="btn btn-secondary">Start saving</a>
-                </div>
-                <div class="fx-image">
-                    <img src="./images/fx-rates.png" alt="FX Rates" />
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Transfer Speed Section -->
-        <section class="transfer-speed">
-            <div class="container">
-                <div class="speed-content">
-                    <h2>How fast are money transfers?</h2>
-                    <p>
-                        Enjoy instant transfers between users in the app, making sure your money moves exactly when you need
-                        it. Plus, we offer fast traditional transfers through Faster Payments and SEPA, ensuring your funds
-                        arrive quickly.
-                    </p>
-                    <a href="#" class="btn btn-primary">Send money</a>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- How To Send Section -->
-        <section class="how-to-send">
-            <div class="container">
-                <h2>HOW TO SEND MONEY WITH WASABICARD</h2>
-                <div class="steps-container">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Register for free</h3>
-                        <p>Create a free account on our website. Easily top up your account through bank transfer, card, and other payment options.</p>
+                    <div class="hero-text">
+                        <h1>Send Crypto, Receive Local Currency</h1>
+                        <p>Transfer cryptocurrency and instantly convert to local currency in 10+ countries. Your recipient receives money in their preferred currency, anywhere in the world.</p>
+                        <div class="">
+                            <a href="#" class="btn btn-primary">Start Transferring</a>
+                            <!-- <a href="#" class="btn btn-secondary">View Supported Countries</a> -->
+                        </div>
                     </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Select your method</h3>
-                        <p>Choose your transfer method, and enter how much you want to send. Add the recipient's details and their currency. You'll see our exchange rates and fees upfront.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Transfer money</h3>
-                        <p>All done — We'll handle the rest, and keep you posted on the status of your transfer through email notifications.</p>
+                    <div class="hero-image">
+                        <img src="./images/crypto-transfer.png" alt="Crypto Transfer" />
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Lightning Speed Section -->
-        <section class="lightning-speed">
+        <!-- Supported Currencies Section -->
+        <section class="supported-currencies-section">
             <div class="container">
-                <div class="lightning-content">
-                    <h2>Send money at lightning speed</h2>
-                    <p>
-                        Fast-track your money transfers with Wasabicard, experience fast international transfers at
-                        exceptional exchange rates, making every transaction a breeze.
-                    </p>
-                    <a href="#" class="btn btn-primary">Start saving</a>
-                </div>
-                <div class="lightning-image">
-                    <img src="./images/lightning-speed.png" alt="Lightning Speed" />
+                <h3 class="supported-currencies-title">Supported Currencies</h3>
+                <div class="supported-currencies">
+                    <span><img src="icons/aud.svg" alt="AUD" /> AUD</span>
+                    <span><img src="icons/bdt.svg" alt="BDT" /> BDT</span>
+                    <span><img src="icons/cad.svg" alt="CAD" /> CAD</span>
+                    <span><img src="icons/cny.svg" alt="CNY" /> CNY</span>
+                    <span><img src="icons/eur.svg" alt="EUR" /> EUR</span>
+                    <span><img src="icons/idr.svg" alt="IDR" /> IDR</span>
+                    <span><img src="icons/inr.svg" alt="INR" /> INR</span>
+                    <span><img src="icons/jpy.svg" alt="JPY" /> JPY</span>
+                    <span><img src="icons/krw.svg" alt="KRW" /> KRW</span>
+                    <span><img src="icons/mnt.svg" alt="MNT" /> MNT</span>
+                    <span><img src="icons/myr.svg" alt="MYR" /> MYR</span>
                 </div>
             </div>
         </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Digital Currency Transfers Section -->
-        <section class="digital-currency-transfers">
+        <!-- Features Section -->
+        <section class="features-section">
             <div class="container">
-                <div class="dc-content">
-                    <h2>Digital Currency Fast Transfers</h2>
-                    <p>Experience the future of international money transfers with Wasabicard's digital currency service.</p>
-                    
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <i class="fas fa-globe"></i>
-                            <h3>20+ Countries Coverage</h3>
-                            <p>Send money instantly to more than 20 countries worldwide with just a few clicks.</p>
+                <div class="features-grid">
+                    <!-- Digital Currency Conversion -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-exchange-alt"></i>
                         </div>
-                        
-                        <div class="benefit-item">
-                            <i class="fas fa-bolt"></i>
-                            <h3>Lightning Fast Arrival</h3>
-                            <p>While traditional banks take 3-5 business days, our digital transfers complete in minutes.</p>
-                        </div>
-                        
-                        <div class="benefit-item">
-                            <i class="fas fa-percentage"></i>
-                            <h3>Lower Exchange Rates</h3>
-                            <p>Save up to 70% on exchange fees compared to traditional banking services.</p>
-                        </div>
-                        
-                        <div class="benefit-item">
+                        <h3>Instant Currency Conversion</h3>
+                        <p>Convert crypto to local currency in 10+ countries</p>
+                        <ul class="feature-list">
+                            <li>Support for major cryptocurrencies</li>
+                            <li>Real-time exchange rates</li>
+                            <li>Instant conversion to local currency</li>
+                            <li>Competitive exchange rates</li>
+                        </ul>
+                    </div>
+
+                    <!-- Institutional Security -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
-                            <h3>Enhanced Security</h3>
-                            <p>Our blockchain-based transfers offer superior security and transparency for your peace of mind.</p>
                         </div>
+                        <h3>Secure Transfers</h3>
+                        <p>Enterprise-grade security for your peace of mind</p>
+                        <ul class="feature-list">
+                            <li>Multi-signature protection</li>
+                            <li>End-to-end encryption</li>
+                            <li>24/7 monitoring</li>
+                            <li>Regulated compliance</li>
+                        </ul>
                     </div>
-                    
-                    <a href="#" class="btn btn-primary">Try Digital Transfers</a>
+
+                    <!-- Batch Processing -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>Complete transfers in minutes, not days</p>
+                        <ul class="feature-list">
+                            <li>Instant blockchain confirmations</li>
+                            <li>Real-time exchange rates</li>
+                            <li>Automated processing</li>
+                            <li>Transaction tracking</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section class="cta">
+        <section class="cta-section">
             <div class="container">
-                <h2>A financial platform built for you</h2>
-                <p>
-                    Trade on the go, invest, and grow your wealth. Start building a better financial future with Wasabicard.
-                </p>
-                <a href="#" class="btn btn-primary">Get started</a>
+                <div class="cta-content">
+                    <h2>Send Money Globally with Crypto</h2>
+                    <p>Experience the future of international transfers - send cryptocurrency and let your recipient receive local currency instantly</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary">Start Transferring</a>
+                        <a href="#" class="btn btn-secondary">View Exchange Rates</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
