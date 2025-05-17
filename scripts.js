@@ -183,4 +183,27 @@ document.addEventListener('DOMContentLoaded', function() {
         firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 40 + 'px';
         firstAnswer.style.padding = '20px';
     }
+});
+
+// Feature tabs functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const featuresSections = document.querySelectorAll('.features-section');
+
+    featuresSections.forEach(section => {
+        const tabButtons = section.querySelectorAll('.tab-button');
+        const featureCards = section.querySelectorAll('.feature-card');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and cards in this section
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                featureCards.forEach(card => card.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding card
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                section.querySelector(`#${tabId}-card`).classList.add('active');
+            });
+        });
+    });
 }); 
