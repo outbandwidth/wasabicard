@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>卡片列表页面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f7f8fa; }
+    .container { display: flex; max-width: 1200px; margin: 40px auto; gap: 32px; }
+    .sidebar, .main { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px #0001; padding: 24px; }
+    .sidebar { width: 260px; flex-shrink: 0; }
+    .main { flex: 1; }
+    h2 { font-size: 1.2em; margin: 0 0 16px 0; }
+    .filter-group { margin-bottom: 20px; }
+    .filter-group label { display: block; margin-bottom: 6px; color: #888; }
+    .filter-group select, .filter-group input { width: 100%; padding: 6px 8px; border: 1px solid #ddd; border-radius: 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tag { background: #f0f4ff; color: #3366ff; border-radius: 6px; padding: 4px 10px; font-size: 0.95em; cursor: pointer; transition: background 0.2s; }
+    .tag:hover { background: #e0eaff; }
+    .card-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+    .card { background: #f9fafb; border-radius: 10px; padding: 18px 16px; box-shadow: 0 1px 4px #0001; display: flex; flex-direction: column; gap: 8px; }
+    .card .card-header { display: flex; align-items: center; gap: 8px; }
+    .card .card-type { font-size: 0.9em; color: #888; }
+    .card .card-status { font-size: 0.9em; border-radius: 4px; padding: 2px 8px; }
+    .status-available { background: #e6f9e6; color: #1a8a1a; }
+    .status-used { background: #f5f5f5; color: #aaa; }
+    .status-frozen { background: #ffeaea; color: #d32f2f; }
+    .card-actions { margin-top: 8px; display: flex; gap: 8px; }
+    .card-actions button { padding: 4px 10px; border: none; border-radius: 4px; background: #3366ff; color: #fff; cursor: pointer; font-size: 0.95em; }
+    .card-actions button.secondary { background: #f0f0f0; color: #3366ff; }
+    .copied-tip { color: #1a8a1a; font-size: 0.9em; margin-left: 8px; }
+    @media (max-width: 900px) {
+      .container { flex-direction: column; gap: 20px; }
+      .sidebar { width: 100%; }
+    }
+    /* 弹窗样式 */
+    .modal-bg {
+      display: none; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.25); z-index: 1000; align-items: center; justify-content: center;
+    }
+    .modal-bg.active { display: flex; }
+    .modal {
+      background: #fff; border-radius: 10px; padding: 32px 28px; min-width: 320px; max-width: 90vw;
+      box-shadow: 0 4px 24px #0002; position: relative;
+    }
+    .modal-close {
+      position: absolute; right: 16px; top: 12px; font-size: 1.3em; color: #888; cursor: pointer;
+    }
+    .modal h3 { margin-top: 0; }
+    .modal-detail-row { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 侧边栏：推荐与筛选 -->
+    <aside class="sidebar">
+      <h2>推荐场景</h2>
+      <div class="tags">
+        <div class="tag">Telegram</div>
+        <div class="tag">Apple</div>
+        <div class="tag">Amazon</div>
+        <div class="tag">Google</div>
+        <div class="tag">ChatGPT</div>
+        <div class="tag">Paypal</div>
+      </div>
+      <div class="filter-group">
+        <label for="scene">消费场景</label>
+        <input type="text" id="scene" placeholder="输入平台名筛选卡段">
+      </div>
+      <div class="filter-group">
+        <label for="date">时间范围</label>
+        <select id="date">
+          <option>不限</option>
+          <option>近7天</option>
+          <option>近30天</option>
+        </select>
+      </div>
+      <button style="width:100%;margin-top:10px;background:#3366ff;color:#fff;padding:8px 0;border-radius:6px;border:none;cursor:pointer;">搜索</button>
+    </aside>
+
+    <!-- 主区域：卡片列表 -->
+    <main class="main">
+      <h2>卡片列表</h2>
+      <div class="filter-group" style="display:flex;gap:12px;">
+        <select>
+          <option>类型</option>
+          <option>PrepaidCard</option>
+          <option>CreditCard</option>
+        </select>
+        <select>
+          <option>网络</option>
+          <option>VISA</option>
+          <option>MasterCard</option>
+        </select>
+        <select>
+          <option>地区</option>
+          <option>US</option>
+          <option>EU</option>
+        </select>
+        <select>
+          <option>AVS验证</option>
+          <option>是</option>
+          <option>否</option>
+        </select>
+        <select>
+          <option>3DS验证</option>
+          <option>是</option>
+          <option>否</option>
+        </select>
+      </div>
+      <div class="card-list" id="cardList">
+        <!-- 卡片示例，数据可用JS渲染 -->
+      </div>
+    </main>
+  </div>
+
+  <!-- 卡片详情弹窗 -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <h3>卡片详情</h3>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    // 示例卡片数据
+    const cards = [
+      {
+        id: 1, type: 'VISA', status: 'available', number: '4474 20XX 1234',
+        cardType: 'PrepaidCard', region: 'US', avs: '是', used: false
+      },
+      {
+        id: 2, type: 'VISA', status: 'used', number: '4146 31XX 5678',
+        cardType: 'PrepaidCard', region: 'US', avs: '否', used: true
+      },
+      {
+        id: 3, type: 'VISA', status: 'frozen', number: '4938 75XX 9012',
+        cardType: 'PrepaidCard', region: 'US', avs: '是', used: false
+      }
+    ];
+
+    // 渲染卡片
+    function renderCards() {
+      const cardList = document.getElementById('cardList');
+      cardList.innerHTML = '';
+      cards.forEach(card => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card';
+        cardDiv.innerHTML = `
+          <div class="card-header">
+            <span class="card-type">${card.type}</span>
+            <span class="card-status status-${card.status}">${card.status === 'available' ? '可用' : card.status === 'used' ? '已用' : '冻结'}</span>
+          </div>
+          <div>卡号：**** ${card.number}</div>
+          <div>类型：${card.cardType}</div>
+          <div>地区：${card.region}</div>
+          <div>AVS验证：${card.avs}</div>
+          <div class="card-actions">
+            <button onclick="copyCardNumber('${card.number}', this)">复制卡号</button>
+            <button class="secondary" onclick="showDetail(${card.id})">详情</button>
+            ${card.status === 'available' ? `<button class="secondary" onclick="toggleFreeze(${card.id}, this)">冻结</button>` : card.status === 'frozen' ? `<button class="secondary" onclick="toggleFreeze(${card.id}, this)">解冻</button>` : ''}
+          </div>
+        `;
+        cardList.appendChild(cardDiv);
+      });
+    }
+
+    // 复制卡号
+    function copyCardNumber(number, btn) {
+      navigator.clipboard.writeText(number.replace(/X/g, '0'));
+      btn.insertAdjacentHTML('afterend', '<span class="copied-tip">已复制</span>');
+      setTimeout(() => {
+        const tip = btn.parentNode.querySelector('.copied-tip');
+        if (tip) tip.remove();
+      }, 1200);
+    }
+
+    // 显示详情弹窗
+    function showDetail(id) {
+      const card = cards.find(c => c.id === id);
+      const modalBg = document.getElementById('modalBg');
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+        <div class="modal-detail-row"><b>卡号：</b>**** ${card.number}</div>
+        <div class="modal-detail-row"><b>类型：</b>${card.cardType}</div>
+        <div class="modal-detail-row"><b>地区：</b>${card.region}</div>
+        <div class="modal-detail-row"><b>AVS验证：</b>${card.avs}</div>
+        <div class="modal-detail-row"><b>状态：</b>${card.status === 'available' ? '可用' : card.status === 'used' ? '已用' : '冻结'}</div>
+        <div class="modal-detail-row"><b>组织：</b>${card.type}</div>
+      `;
+      modalBg.classList.add('active');
+    }
+    document.getElementById('modalClose').onclick = () => {
+      document.getElementById('modalBg').classList.remove('active');
+    };
+    document.getElementById('modalBg').onclick = (e) => {
+      if (e.target === document.getElementById('modalBg')) {
+        document.getElementById('modalBg').classList.remove('active');
+      }
+    };
+
+    // 冻结/解冻
+    function toggleFreeze(id, btn) {
+      const card = cards.find(c => c.id === id);
+      if (card.status === 'available') {
+        card.status = 'frozen';
+      } else if (card.status === 'frozen') {
+        card.status = 'available';
+      }
+      renderCards();
+    }
+
+    // 初始化
+    renderCards();
+  </script>
+</body>
+</html>
